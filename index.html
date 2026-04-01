@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Expense Tracker</h1>
+
+      <section id="server-status" class="card">
+        <h2>Server Status</h2>
+        <p class="muted">
+          This app uses a backend (server) to securely talk to Airtable.
+        </p>
+        <p id="server-status-text" class="status"></p>
+      </section>
+
+      <section id="auth-section" class="card">
+        <h2>Create new tracker or use existing one</h2>
+        <div class="auth-actions">
+          <button id="create-tracker-btn">Create New Tracker</button>
+          <div class="existing-wrap">
+            <input
+              id="existing-id-input"
+              type="text"
+              maxlength="10"
+              placeholder="Enter 10-digit ID"
+            />
+            <button id="load-tracker-btn">Load Existing Tracker</button>
+          </div>
+        </div>
+        <p id="auth-status" class="status"></p>
+      </section>
+
+      <section id="tracker-section" class="card hidden">
+        <div class="tracker-header">
+          <div>
+            <h2>Your Tracker</h2>
+            <p class="muted">
+              Tracker ID: <strong id="tracker-id-label"></strong>
+            </p>
+          </div>
+          <button id="logout-btn" class="secondary">Switch Tracker</button>
+        </div>
+
+        <div class="balance-box">
+          <span>Current Money</span>
+          <h3 id="balance-label">$0.00</h3>
+        </div>
+
+        <form id="tx-form" class="tx-form">
+          <input
+            id="tx-description"
+            type="text"
+            placeholder="Transaction description"
+            required
+          />
+          <input id="tx-amount" type="number" step="0.01" placeholder="Amount" required />
+          <select id="tx-type">
+            <option value="income">Money In</option>
+            <option value="expense">Money Out</option>
+          </select>
+          <button type="submit">Add Transaction</button>
+        </form>
+
+        <div id="tx-list" class="tx-list"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
